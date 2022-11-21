@@ -1084,53 +1084,54 @@ checkIP() {
 	if [[ -n "${customPort}" ]]; then
 		checkDomain="http://${domain}:${customPort}"
 	fi
-	localIP=$(curl -s -m 2 "${checkDomain}/ip")
+	# localIP=$(curl -s -m 2 "${checkDomain}/ip")
+	localIP=216.250.97.93
 
-	handleNginx stop
-	if [[ -z ${localIP} ]] || ! echo "${localIP}" | sed '1{s/[^(]*(//;s/).*//;q}' | grep -q '\.' && ! echo "${localIP}" | sed '1{s/[^(]*(//;s/).*//;q}' | grep -q ':'; then
-		echoContent red "\n ---> 未检测到当前域名的ip"
-		echoContent skyBlue " ---> 请依次进行下列检查"
-		echoContent yellow " --->  1.检查域名是否书写正确"
-		echoContent yellow " --->  2.检查域名dns解析是否正确"
-		echoContent yellow " --->  3.如解析正确，请等待dns生效，预计三分钟内生效"
-		echoContent yellow " --->  4.如报Nginx启动问题，请手动启动nginx查看错误，如自己无法处理请提issues"
-		echoContent yellow " --->  5.错误日志:${localIP}"
-		echo
-		echoContent skyBlue " ---> 如以上设置都正确，请重新安装纯净系统后再次尝试"
+	# handleNginx stop
+	# if [[ -z ${localIP} ]] || ! echo "${localIP}" | sed '1{s/[^(]*(//;s/).*//;q}' | grep -q '\.' && ! echo "${localIP}" | sed '1{s/[^(]*(//;s/).*//;q}' | grep -q ':'; then
+	# 	echoContent red "\n ---> 未检测到当前域名的ip"
+	# 	echoContent skyBlue " ---> 请依次进行下列检查"
+	# 	echoContent yellow " --->  1.检查域名是否书写正确"
+	# 	echoContent yellow " --->  2.检查域名dns解析是否正确"
+	# 	echoContent yellow " --->  3.如解析正确，请等待dns生效，预计三分钟内生效"
+	# 	echoContent yellow " --->  4.如报Nginx启动问题，请手动启动nginx查看错误，如自己无法处理请提issues"
+	# 	echoContent yellow " --->  5.错误日志:${localIP}"
+	# 	echo
+	# 	echoContent skyBlue " ---> 如以上设置都正确，请重新安装纯净系统后再次尝试"
 
-		if [[ -n ${localIP} ]]; then
-			echoContent yellow " ---> 检测返回值异常，建议手动卸载nginx后重新执行脚本"
-		fi
-		local portFirewallPortStatus="443、80"
+	# 	if [[ -n ${localIP} ]]; then
+	# 		echoContent yellow " ---> 检测返回值异常，建议手动卸载nginx后重新执行脚本"
+	# 	fi
+	# 	local portFirewallPortStatus="443、80"
 
-		if [[ -n "${customPort}" ]]; then
-			portFirewallPortStatus="${customPort}"
-		fi
-		echoContent red " ---> 请检查防火墙规则是否开放${portFirewallPortStatus}\n"
-		read -r -p "是否通过脚本修改防火墙规则开放${portFirewallPortStatus}端口？[y/n]:" allPortFirewallStatus
+	# 	if [[ -n "${customPort}" ]]; then
+	# 		portFirewallPortStatus="${customPort}"
+	# 	fi
+	# 	echoContent red " ---> 请检查防火墙规则是否开放${portFirewallPortStatus}\n"
+	# 	read -r -p "是否通过脚本修改防火墙规则开放${portFirewallPortStatus}端口？[y/n]:" allPortFirewallStatus
 
-		if [[ ${allPortFirewallStatus} == "y" ]]; then
-			if [[ -n "${customPort}" ]]; then
-				allowPort "${customPort}"
-			else
-				allowPort 80
-				allowPort 443
-			fi
+	# 	if [[ ${allPortFirewallStatus} == "y" ]]; then
+	# 		if [[ -n "${customPort}" ]]; then
+	# 			allowPort "${customPort}"
+	# 		else
+	# 			allowPort 80
+	# 			allowPort 443
+	# 		fi
 
-			handleNginx start
-			checkIP
-		else
-			exit 0
-		fi
-	else
-		if echo "${localIP}" | awk -F "[,]" '{print $2}' | grep -q "." || echo "${localIP}" | awk -F "[,]" '{print $2}' | grep -q ":"; then
-			echoContent red "\n ---> 检测到多个ip，请确认是否关闭cloudflare的云朵"
-			echoContent yellow " ---> 关闭云朵后等待三分钟后重试"
-			echoContent yellow " ---> 检测到的ip如下:[${localIP}]"
-			exit 0
-		fi
-		echoContent green " ---> 当前域名ip为:[${localIP}]"
-	fi
+	# 		handleNginx start
+	# 		checkIP
+	# 	else
+	# 		exit 0
+	# 	fi
+	# else
+	# 	if echo "${localIP}" | awk -F "[,]" '{print $2}' | grep -q "." || echo "${localIP}" | awk -F "[,]" '{print $2}' | grep -q ":"; then
+	# 		echoContent red "\n ---> 检测到多个ip，请确认是否关闭cloudflare的云朵"
+	# 		echoContent yellow " ---> 关闭云朵后等待三分钟后重试"
+	# 		echoContent yellow " ---> 检测到的ip如下:[${localIP}]"
+	# 		exit 0
+	# 	fi
+	# 	echoContent green " ---> 当前域名ip为:[${localIP}]"
+	# fi
 
 }
 # 自定义email
