@@ -55,19 +55,7 @@
 - Trojan+gRPC+TLS【支持CDN、IPv6、延迟低】
 - VMess+WS+TLS【支持CDN、IPv6】
 
-## 线路推荐
 
-- [CN2 GIA](https://github.com/mack-a/v2ray-agent/blob/master/documents/donation_aff.md#1cn2-gia)
-- 上海CN2+HK
-- [AS9929](https://github.com/mack-a/v2ray-agent/blob/master/documents/donation_aff.md#2%E8%81%94%E9%80%9A-as9929a%E7%BD%91)
-- [AS4837](https://github.com/mack-a/v2ray-agent/blob/master/documents/donation_aff.md#3%E8%81%94%E9%80%9A-as4837%E6%99%AE%E9%80%9A%E6%B0%91%E7%94%A8%E7%BD%91)
-- [联通日本软银](https://github.com/mack-a/v2ray-agent/blob/master/documents/donation_aff.md#4%E8%81%94%E9%80%9A-%E6%97%A5%E6%9C%AC%E8%BD%AF%E9%93%B6)
-- 联通+台湾TFN
-- 联通+NTT
-- 广移/珠移+HKIX/CMI/NTT
-- 广移/CN2+Cloudflare+全球
-- 广移/CN2/南联+香港AZ+全球
-- 中转+cloudflare+落地机【可拉全球】
 
 ## 注意事项
 
@@ -91,13 +79,6 @@
 
 ## [脚本使用指南](https://github.com/Ryushimo/v2ray-agent/blob/master/documents/how_to_use.md)、[脚本目录](https://github.com/Ryushimo/v2ray-agent/blob/master/documents/how_to_use.md#5脚本目录)
 
-## 捐赠
-
-[您可以使用我的AFF进行购买VPS捐赠-博客](https://www.v2ray-agent.com/%E6%82%A8%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E6%88%91%E7%9A%84AFF%E8%B4%AD%E4%B9%B0vps%E6%8D%90%E8%B5%A0)
-
-[您可以使用我的AFF进行购买VPS捐赠-Github](https://github.com/mack-a/v2ray-agent/blob/master/documents/donation_aff.md)
-
-[支持通过虚拟币向我捐赠](https://github.com/mack-a/v2ray-agent/blob/master/documents/donation.md)
 
 ## 安装脚本
 
@@ -121,7 +102,7 @@ wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/Ryush
 
 # 许可证
 
-[AGPL-3.0](https://github.com/mack-a/v2ray-agent/blob/master/LICENSE)
+[AGPL-3.0](https://github.com/Ryushimo/v2ray-agent/blob/master/LICENSE)
 
 ## Stargazers over time
 
